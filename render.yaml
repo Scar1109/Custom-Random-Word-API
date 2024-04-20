@@ -1,0 +1,12 @@
+# Exported from Render on 2024-04-20T09:55:48Z
+services:
+- type: web
+  name: Random-Word-API
+  runtime: node
+  repo: https://github.com/Scar1109/Custom-Random-Word-API
+  plan: free
+  region: singapore
+  buildCommand: npm run build
+  startCommand: node server
+  rootDir: ./
+version: "1"
