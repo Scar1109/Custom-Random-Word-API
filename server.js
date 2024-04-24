@@ -24,11 +24,11 @@ app.get("/api/getRandomWord", (req, res) => {
             temp = selectRandomWord(words);
         }
     } else if (difficulty === "normal") {
-        while (temp.word.length < 5 || temp.word.length > 8) {
+        while (temp.word.length < 5 || temp.word.length > 7) {
             temp = selectRandomWord(words);
         }
     } else if (difficulty === "hard") {
-        while (temp.word.length < 9) {
+        while (temp.word.length < 8 || temp.word.length > 9) {
             temp = selectRandomWord(words);
         }
     }
@@ -36,7 +36,16 @@ app.get("/api/getRandomWord", (req, res) => {
 });
 
 
-app.get("/api/")
+app.get("/api/getRandomWord" , (req, res) => {
+    const len = req.query.len;
+    console.log(difficulty);
+
+    let temp = selectRandomWord(words);
+    while (temp.word.length !== len) {
+        temp = selectRandomWord(words);
+    }
+    res.json(temp);
+});
 
 
 const port = process.env.PORT || 5998;
